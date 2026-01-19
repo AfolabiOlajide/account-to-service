@@ -98,7 +98,7 @@ function App() {
 
             <main className="container max-w-7xl mx-auto p-4 sm:px-6 md:py-8 space-y-10">
                 {/* Stats & Search Row */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-12 gap-6">
                     <div className="md:col-span-2">
                         <StatsCard
                             title="Identities"
@@ -113,7 +113,7 @@ function App() {
                             icon={Link}
                         />
                     </div>
-                    <div className="md:col-span-8 flex items-center">
+                    <div className="col-span-2 md:col-span-8 flex items-center">
                         <SearchBar
                             value={searchQuery}
                             onChange={setSearchQuery}
