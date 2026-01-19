@@ -45,7 +45,7 @@ export function AccountCard({ account }: AccountCardProps) {
     }
 
     return (
-        <Card className="flex flex-col h-full bg-card/60 backdrop-blur-sm border-border/60 shadow-sm hover:border-primary/50 hover:shadow-md transition-all">
+        <Card className="flex flex-col h-full bg-card/60 backdrop-blur-sm border-border/60 shadow-sm hover:border-primary/50 hover:shadow-md transition-all rounded-3xl">
             <div className="p-6 pb-2">
                 <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-4 min-w-0">
@@ -61,7 +61,7 @@ export function AccountCard({ account }: AccountCardProps) {
                             </h3>
                             <Badge
                                 variant="secondary"
-                                className="mt-0.5 font-normal text-xs px-2 py-0 h-5"
+                                className="mt-0.5 font-normal text-md px-4 py-2 h-7 bg-primary/10 text-primary"
                             >
                                 {account.category}
                             </Badge>

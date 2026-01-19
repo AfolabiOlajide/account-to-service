@@ -21,7 +21,7 @@ export function ServiceList({ services, onRemove }: ServiceListProps) {
                 <Badge
                     key={service}
                     variant="secondary"
-                    className="flex items-center gap-1 pr-1"
+                    className="flex items-center gap-1 px-4 py-2 text-md rounded-3xl bg-primary/10 text-primary"
                 >
                     {service}
                     <button

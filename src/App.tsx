@@ -4,12 +4,12 @@ import { AccountCard } from "./components/AccountCard";
 import { EmptyState } from "./components/EmptyState";
 import { StatsCard } from "./components/StatsCard";
 import { SearchBar } from "./components/SearchBar";
-import { CreateIdentityCard } from "./components/CreateIdentityCard";
 import { useAccounts } from "./hooks/useAccounts";
 import { useEffect, useState } from "react";
 import { Button } from "./components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./components/ui/dialog";
 import { Moon, Sun } from "lucide-react";
+import { CreateAccountCard } from "./components/CreateAccountCard";
 
 function App() {
     const { accounts } = useAccounts();
@@ -131,7 +131,7 @@ function App() {
                                 onClick={() => setIsCreateOpen(true)}
                                 className="mt-6"
                             >
-                                Create your first Identity
+                                Create your first Account
                             </Button>
                         </div>
                     ) : (
@@ -148,9 +148,7 @@ function App() {
                             >
                                 <DialogTrigger asChild>
                                     <div className="h-full">
-                                        <CreateIdentityCard
-                                            onClick={() => {}}
-                                        />
+                                        <CreateAccountCard onClick={() => {}} />
                                     </div>
                                 </DialogTrigger>
                                 <DialogContent>
