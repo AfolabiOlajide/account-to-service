@@ -11,7 +11,7 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@radix-ui/react-select";
+} from "./ui/select";
 
 interface AccountFormProps {
     onSuccess?: () => void;
@@ -33,7 +33,7 @@ export function AccountForm({ onSuccess }: AccountFormProps) {
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 p-4 rounded-lg bg-card text-card-foreground shadow-sm"
+            className="flex flex-col gap-6 text-card-foreground"
         >
             <h2 className="text-lg font-semibold">Add New Account</h2>
             <div className="grid gap-2">
@@ -47,31 +47,22 @@ export function AccountForm({ onSuccess }: AccountFormProps) {
             </div>
             <div className="grid gap-2">
                 <Label htmlFor="account-category">Category</Label>
-                <select
-                    id="account-category"
+                <Select
                     value={category}
-                    onChange={(e) =>
-                        setCategory(e.target.value as AccountCategory)
+                    onValueChange={(value) =>
+                        setCategory(value as AccountCategory)
                     }
-                    className={cn(
-                        "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-                    )}
                 >
-                    <option value="email">Email</option>
-                    <option value="social">Social Login</option>
-                    <option value="custom">Custom</option>
-                </select>
+                    <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select a category" />
+                    </SelectTrigger>
+                    <SelectContent className="border border-input">
+                        <SelectItem value="email">Email</SelectItem>
+                        <SelectItem value="social">Social Login</SelectItem>
+                        <SelectItem value="custom">Custom</SelectItem>
+                    </SelectContent>
+                </Select>
             </div>
-            <Select>
-                <SelectTrigger>
-                    <SelectValue placeholder="Select a category" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectItem value="email">Email</SelectItem>
-                    <SelectItem value="social">Social Login</SelectItem>
-                    <SelectItem value="custom">Custom</SelectItem>
-                </SelectContent>
-            </Select>
             <Button type="submit" disabled={!label.trim()}>
                 Add Account
             </Button>
