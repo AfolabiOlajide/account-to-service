@@ -5,6 +5,13 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { cn } from "../lib/utils";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@radix-ui/react-select";
 
 interface AccountFormProps {
     onSuccess?: () => void;
@@ -26,7 +33,7 @@ export function AccountForm({ onSuccess }: AccountFormProps) {
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 p-4 border rounded-lg bg-card text-card-foreground shadow-sm"
+            className="flex flex-col gap-4 p-4 rounded-lg bg-card text-card-foreground shadow-sm"
         >
             <h2 className="text-lg font-semibold">Add New Account</h2>
             <div className="grid gap-2">
@@ -55,6 +62,16 @@ export function AccountForm({ onSuccess }: AccountFormProps) {
                     <option value="custom">Custom</option>
                 </select>
             </div>
+            <Select>
+                <SelectTrigger>
+                    <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="email">Email</SelectItem>
+                    <SelectItem value="social">Social Login</SelectItem>
+                    <SelectItem value="custom">Custom</SelectItem>
+                </SelectContent>
+            </Select>
             <Button type="submit" disabled={!label.trim()}>
                 Add Account
             </Button>
