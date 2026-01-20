@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# ATS Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ATS Tracker (Account To Service Tracker) is a local-first application designed to help you organize and track your digital identities and the services associated with them. It allows you to map out which email addresses or social details are used for which services, giving you a clear "Identity Map" of your digital footprint.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Identity Map**: Visualize your accounts (identities) and their connected services.
+- **Local Storage**: All data is persisted locally in your browser's LocalStorage. No external database required.
+- **Dark/Light Mode**: Fully supported theming with system preference detection.
+- **Search & Filter**: Quickly find specific services or accounts using the built-in search.
+- **Responsive Design**: Built with a mobile-first approach using Tailwind CSS.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React (v19) with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS (v4)
+- **UI Components**: shadcn/ui (Radix UI + Lucide Icons)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (Latest LTS recommended)
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1.  Clone the repository:
+    ```bash
+    git clone <repository-url>
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd ats-tracker
+    ```
+3.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+Start the development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The application will be available at `http://localhost:5173` (or the port shown in your terminal).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To build the application for production:
+
+```bash
+npm run build
 ```
+
+The build artifacts will be stored in the `dist/` directory.
+
+### Linting
+
+To run the linter:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+- `src/components`: UI components (including shadcn/ui primitives).
+- `src/hooks`: Custom React hooks (e.g., `useAccounts`).
+- `src/lib`: Utilities, types, and storage logic.
+- `src/App.tsx`: Main application file.
