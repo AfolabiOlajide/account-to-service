@@ -8,7 +8,7 @@ export function CreateAccountCard({ onClick }: CreateAccountCardProps) {
     return (
         <button
             onClick={onClick}
-            className="group flex flex-col items-center justify-center w-full h-full min-h-[300px] border-2 border-dashed border-muted-foreground/20 hover:border-muted-foreground/50 rounded-3xl transition-colors cursor-pointer"
+            className="group flex flex-col items-center justify-center w-full h-full min-h-[300px] border-2 border-dashed border-muted-foreground/20 hover:border-muted-foreground/50 transition-colors cursor-pointer"
         >
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-muted group-hover:bg-muted/80 mb-4 transition-colors">
                 <Plus className="w-8 h-8 text-muted-foreground" />

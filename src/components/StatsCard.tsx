@@ -9,7 +9,7 @@ interface StatsCardProps {
 
 export function StatsCard({ title, value, icon: Icon }: StatsCardProps) {
     return (
-        <Card className="bg-card text-card-foreground border border-border shadow-sm rounded-3xl">
+        <Card className="bg-card text-card-foreground border border-border shadow-sm ">
             <CardContent className="flex flex-col items-start gap-4 p-6">
                 <div className="flex items-center gap-4">
                     <div className="flex items-center justify-center text-muted-foreground">

@@ -4,7 +4,6 @@ import type { AccountCategory } from "../lib/types";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { cn } from "../lib/utils";
 import {
     Select,
     SelectContent,
@@ -33,7 +32,7 @@ export function AccountForm({ onSuccess }: AccountFormProps) {
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-6 text-card-foreground"
+            className="flex flex-col gap-6 text-card-foreground font-mono"
         >
             <h2 className="text-lg font-semibold">Add New Account</h2>
             <div className="grid gap-2">
@@ -56,14 +55,18 @@ export function AccountForm({ onSuccess }: AccountFormProps) {
                     <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select a category" />
                     </SelectTrigger>
-                    <SelectContent className="border border-input">
+                    <SelectContent className="border border-input font-mono">
                         <SelectItem value="email">Email</SelectItem>
                         <SelectItem value="social">Social Login</SelectItem>
                         <SelectItem value="custom">Custom</SelectItem>
                     </SelectContent>
                 </Select>
             </div>
-            <Button type="submit" disabled={!label.trim()}>
+            <Button
+                type="submit"
+                disabled={!label.trim()}
+                className="cursor-pointer"
+            >
                 Add Account
             </Button>
         </form>

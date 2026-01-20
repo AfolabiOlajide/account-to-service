@@ -18,7 +18,7 @@ export function SearchBar({
             <Input
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                className="pl-16 h-20 md:h-full bg-card border shadow-sm text-base rounded-3xl"
+                className="pl-16 h-20 md:h-full bg-card border shadow-sm text-base "
                 placeholder={placeholder}
             />
         </div>

@@ -1,4 +1,4 @@
-import { Shield, Briefcase, Plus, Link } from "lucide-react";
+import { Briefcase, Plus, Link, Blocks } from "lucide-react";
 import { AccountForm } from "./components/AccountForm";
 import { AccountCard } from "./components/AccountCard";
 import { EmptyState } from "./components/EmptyState";
@@ -7,7 +7,14 @@ import { SearchBar } from "./components/SearchBar";
 import { useAccounts } from "./hooks/useAccounts";
 import { useEffect, useState } from "react";
 import { Button } from "./components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "./components/ui/dialog";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "./components/ui/dialog";
 import { Moon, Sun } from "lucide-react";
 import { CreateAccountCard } from "./components/CreateAccountCard";
 
@@ -48,17 +55,17 @@ function App() {
     );
 
     return (
-        <div className="min-h-screen bg-background text-foreground font-sans transition-colors duration-300">
+        <div className="min-h-screen bg-background text-foreground font-mono transition-colors duration-300">
             {/* Header */}
             <header className="sticky top-0 z-50 w-full border-b border-border backdrop-blur">
                 <div className="container max-w-7xl mx-auto h-20 flex items-center justify-between px-4 sm:px-6">
                     <div className="flex items-center gap-3">
-                        <div className="bg-primary/20 p-2 border border-primary/50 rounded-full">
-                            <Shield className="h-6 w-6 text-primary" />
+                        <div className="bg-primary/20 p-2 border border-primary/50 ">
+                            <Blocks className="h-6 w-6 text-primary" />
                         </div>
                         <div>
                             <h1 className="font-bold text-xl leading-none">
-                                Account to Service Tracker
+                                ATS Tracker
                             </h1>
                             <p className="text-xs text-muted-foreground mt-1">
                                 Track your accounts and services
@@ -70,6 +77,7 @@ function App() {
                             variant="ghost"
                             size="icon"
                             onClick={toggleTheme}
+                            className="cursor-pointer"
                         >
                             {theme === "light" ? (
                                 <Moon className="h-5 w-5" />
@@ -82,11 +90,17 @@ function App() {
                             onOpenChange={setIsCreateOpen}
                         >
                             <DialogTrigger asChild>
-                                <Button className="gap-2 rounded-full font-semibold hidden md:flex text-background">
+                                <Button className="gap-2 font-semibold hidden md:flex text-background cursor-pointer">
                                     <Plus className="h-4 w-4" /> Add Account
                                 </Button>
                             </DialogTrigger>
                             <DialogContent>
+                                <DialogHeader className="hidden">
+                                    <DialogTitle>Add Account</DialogTitle>
+                                    <DialogDescription>
+                                        Add a new account to track your signups.
+                                    </DialogDescription>
+                                </DialogHeader>
                                 <AccountForm
                                     onSuccess={() => setIsCreateOpen(false)}
                                 />
@@ -125,11 +139,11 @@ function App() {
                 {/* Content Grid */}
                 <section>
                     {accounts.length === 0 && !searchQuery ? (
-                        <div className="flex flex-col items-center justify-center p-12 text-center">
+                        <div className="flex flex-col items-center justify-center text-center">
                             <EmptyState />
                             <Button
                                 onClick={() => setIsCreateOpen(true)}
-                                className="mt-6"
+                                className="mt-6 text-background font-bold cursor-pointer"
                             >
                                 Create your first Account
                             </Button>
@@ -152,6 +166,13 @@ function App() {
                                     </div>
                                 </DialogTrigger>
                                 <DialogContent>
+                                    <DialogHeader className="hidden">
+                                        <DialogTitle>Add Account</DialogTitle>
+                                        <DialogDescription>
+                                            Add a new account to track your
+                                            signups.
+                                        </DialogDescription>
+                                    </DialogHeader>
                                     <AccountForm
                                         onSuccess={() => setIsCreateOpen(false)}
                                     />

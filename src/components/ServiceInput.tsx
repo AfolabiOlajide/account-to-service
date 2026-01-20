@@ -25,7 +25,7 @@ export function ServiceInput({ onAdd }: ServiceInputProps) {
                 placeholder="Add service + enter"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                className="pr-10 bg-muted/50 border-input/50 focus-visible:bg-muted transition-colors rounded-full"
+                className="pr-10 bg-muted/50 border-input/50 focus-visible:bg-muted transition-colors"
             />
             <button
                 type="submit"
