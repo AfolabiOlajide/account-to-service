@@ -115,7 +115,7 @@ function App() {
                 <div className="grid grid-cols-2 md:grid-cols-12 gap-6">
                     <div className="md:col-span-2">
                         <StatsCard
-                            title="Identities"
+                            title="Accounts"
                             value={accounts.length}
                             icon={Briefcase}
                         />
