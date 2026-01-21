@@ -20,25 +20,30 @@ import { CreateAccountCard } from "./components/CreateAccountCard";
 
 function App() {
     const { accounts } = useAccounts();
-    const [theme, setTheme] = useState<"light" | "dark">("light");
+    const [theme, setTheme] = useState<"light" | "dark">(() => {
+        if (typeof window !== "undefined") {
+            const stored = localStorage.getItem("ats-theme");
+            if (stored === "dark" || stored === "light") return stored;
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+                return "dark";
+        }
+        return "light";
+    });
     const [searchQuery, setSearchQuery] = useState("");
     const [isCreateOpen, setIsCreateOpen] = useState(false);
 
     useEffect(() => {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            setTheme("dark");
-            document.documentElement.classList.add("dark");
+        const root = document.documentElement;
+        if (theme === "dark") {
+            root.classList.add("dark");
+        } else {
+            root.classList.remove("dark");
         }
-    }, []);
+        localStorage.setItem("ats-theme", theme);
+    }, [theme]);
 
     const toggleTheme = () => {
-        if (theme === "light") {
-            setTheme("dark");
-            document.documentElement.classList.add("dark");
-        } else {
-            setTheme("light");
-            document.documentElement.classList.remove("dark");
-        }
+        setTheme((prev) => (prev === "light" ? "dark" : "light"));
     };
 
     const totalServices = accounts.reduce(

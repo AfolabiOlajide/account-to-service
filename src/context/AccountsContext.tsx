@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import type { ReactNode } from "react";
 import type { Account, AccountCategory } from "../lib/types";
 import { loadAccounts, saveAccounts } from "../lib/storage";
